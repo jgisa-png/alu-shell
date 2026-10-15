@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# List non-hidden entries without the prefix through the first dash.
+shopt -s nullglob
+for entry in *
+do
+    echo "${entry#*-}"
+done
