@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Store the PID and handle termination and interrupt signals.
+cleanup()
+{
+    rm -f /var/run/myscript.pid
+    exit 0
+}
+
+trap 'echo "I hate the kill command"; cleanup' TERM
+trap 'echo "Y U no love me?!"' INT
+trap 'cleanup' QUIT
+
+echo "$$" > /var/run/myscript.pid
+
+while true
+do
+    echo "To infinity and beyond"
+    sleep 2
+done
